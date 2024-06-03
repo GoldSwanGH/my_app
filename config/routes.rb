@@ -1,15 +1,23 @@
+# config/routes.rb
 Rails.application.routes.draw do
+  resources :themes
+  resources :images
+  resources :values
   resources :users
-  get 'main/index'
-  get 'main/help'
-  get 'main/contacts'
-  get 'main/about'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  
+  root 'static_pages#home'
+  get  '/help',    to: 'static_pages#help'
+  get  '/register',  to: 'users#new'
+  post '/register',  to: 'users#create'
+  get 'login', to: 'sessions#new', as: 'login'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy', as: 'logout'
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  get '/registration_success', to: 'static_pages#registration_success'
 
-  # Defines the root path route ("/")
-  root "main#index"
+  get '/rating', to: 'ratings#index'
+  get '/load_image', to: 'ratings#load_image'
+  get '/prev_image', to: 'ratings#prev_image'
+  get '/next_image', to: 'ratings#next_image'
+  post '/rate_image', to: 'ratings#rate_image'
 end

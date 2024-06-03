@@ -2,14 +2,19 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title MyApp
+    %title Experteese
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
     = csrf_meta_tags
     = csp_meta_tag
     = favicon_link_tag "favicon.ico"
-    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = stylesheet_link_tag "bootstrap.min"
+    = javascript_include_tag "jquery.min"
+    = javascript_include_tag "bootstrap.bundle.min"
     = javascript_importmap_tags
-    = render 'shared/header'
-    = render 'shared/footer'
   %body
-    = yield
+    = render 'shared/header'
+
+    .container.mt-4
+      = yield
+    
+    = render 'shared/footer'

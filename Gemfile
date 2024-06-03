@@ -96,3 +96,5 @@ gem "font-awesome-sass", "~> 6.5"
 gem "font-awesome-rails", "~> 4.7"
 
 gem "turbolinks", "~> 5.2"
+
+gem 'carrierwave', '~> 2.2'

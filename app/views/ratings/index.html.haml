@@ -1,0 +1,26 @@
+= javascript_include_tag 'ratings'
+%h1= t('ratings_index.title')
+%p= t('ratings_index.choose_theme')
+
+= form_with url: load_image_path, method: :get, local: true, id: 'theme-form' do |f|
+  .form-group
+    = f.label :theme, t('ratings_index.select_theme')
+    = f.select :theme_id, options_from_collection_for_select(@themes, :id, :name), { prompt: t('ratings_index.choose_theme') }, { class: 'form-control' }
+  = f.submit t('ratings_index.load_image_button'), class: "btn btn-primary"
+
+#image-container{ style: 'display: flex; flex-direction: column; align-items: center; max-width: 600px; margin: 0 auto;' }
+  .rating-info{ style: 'margin-bottom: 10px;' }
+    %span= t('ratings_index.average_rating')
+    %span#average-rating{ style: 'font-weight: bold;' }
+  .image-wrapper{ style: 'width: 100%; height: 400px; display: flex; justify-content: center; align-items: center; border: 1px solid #ccc;' }
+    %img#current-image{ src: '', alt: t('ratings_index.image_to_rate'), style: 'max-width: 100%; max-height: 100%;' }
+  .button-wrapper{ style: 'display: flex; justify-content: space-between; align-items: center; width: 100%; margin-top: 10px;' }
+    %button.btn.btn-secondary#prev-image= t('ratings_index.prev_button')
+    %span#image-id{ style: 'margin: 0 10px;' }
+    %button.btn.btn-secondary#next-image= t('ratings_index.next_button')
+
+= form_with url: rate_image_path, method: :post, local: true, id: 'rate-form' do |f|
+  .form-group
+    = f.label :rating, t('ratings_index.rate_image')
+    = f.number_field :value, in: 1..5, class: 'form-control'
+  = f.submit t('ratings_index.submit_button'), class: "btn btn-primary"

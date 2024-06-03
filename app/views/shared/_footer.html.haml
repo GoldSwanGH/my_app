@@ -1,2 +1,5 @@
-%footer
-    %p Lebedev Vladimir
+%footer.footer.fixed-bottom.bg-light.py-3
+  .container.d-flex.justify-content-end.align-items-center
+    %span.mr-auto= t("name")
+    = link_to 'EN', locale: :en, method: :get, class: "btn btn-link mr-3"
+    = link_to 'RU', locale: :ru, method: :get, class: "btn btn-link mr-3"
