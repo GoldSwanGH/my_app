@@ -1,0 +1,7 @@
+-# app/views/users/registration_success.html.haml
+%h1 = t('registration.success')
+
+%p
+  = t('registration.thanks')
+  = link_to t('button_labels.login'), login_path
+  = t('registration.continue')

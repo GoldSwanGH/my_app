@@ -1,0 +1,24 @@
+%header.navbar.navbar-expand-lg.navbar-light.bg-light
+  .container
+    = link_to "Experteese", root_path, class: "navbar-brand"
+
+    %button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+      %span.navbar-toggler-icon
+
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.mr-auto
+        %li.nav-item
+          = link_to t("home"), root_path, class: "nav-link"
+        %li.nav-item
+          = link_to t("about"), help_path, class: "nav-link"
+
+      %ul.navbar-nav.ml-auto.text-right
+        - if logged_in?
+          %li.nav-item.navbar-text.align-self-center= "#{t('logged_in')} #{current_user.email}"
+          %li.nav-item
+            = button_to t("button_labels.logout"), logout_path, method: :delete, class: "nav-link btn btn-outline-danger", form_class: "nav-link"
+        - else
+          %li.nav-item
+            = link_to t("button_labels.register"), register_path, class: "nav-link btn btn-outline-success"
+          %li.nav-item
+            = link_to t("button_labels.login"), login_path, class: "nav-link btn btn-outline-primary"

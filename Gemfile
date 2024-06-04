@@ -8,8 +8,8 @@ gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
-# Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
+# Use postgresql as the database for Active Record
+gem "pg"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
@@ -33,7 +33,11 @@ gem "jbuilder"
 # gem "kredis"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
+gem "bcrypt", "~> 3.1.7"
+
+gem 'activerecord-reset-pk-sequence'
+
+gem 'active_model_serializers'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
@@ -53,6 +57,13 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem "byebug", platform: :mri
+
+  # Better error display
+  gem "better_errors"
+  gem "binding_of_caller"
+
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
@@ -65,3 +76,25 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "haml-rails", "~> 2.1"
+
+gem "html2haml", "~> 2.3"
+
+gem "jquery-rails", "~> 4.6"
+
+gem "jquery-ui-rails", "~> 7.0"
+
+gem "rails-asset-jqueryui", "~> 0.0.3"
+
+gem "sass-rails", "~> 6.0"
+
+gem "bootstrap-sass", "~> 3.4"
+
+gem "font-awesome-sass", "~> 6.5"
+
+gem "font-awesome-rails", "~> 4.7"
+
+gem "turbolinks", "~> 5.2"
+
+gem 'carrierwave', '~> 2.2'

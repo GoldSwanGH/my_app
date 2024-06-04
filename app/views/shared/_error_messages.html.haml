@@ -1,0 +1,7 @@
+-# app/views/shared/_error_messages.html.haml
+- if object && object.errors.any?
+  .alert.alert-danger
+    %h4= "#{pluralize(object.errors.count, "error")} prohibited this #{object.model_name.human.downcase} from being saved:"
+    %ul
+      - object.errors.full_messages.each do |msg|
+        %li= msg
